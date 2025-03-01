@@ -6,3 +6,5 @@ python-dotenv==1.0.1
 python-multipart==0.0.9
 openai==1.64.0
 python-multipart==0.0.9
+llama-cloud-services==0.6.3
+nest_asyncio==1.6.0
