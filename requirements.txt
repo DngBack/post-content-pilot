@@ -1,0 +1,8 @@
+llama-index==0.12.22
+llama-index-llms-openai==0.3.25
+pydatic==2.10.6
+pydantic-settings==2.8.1
+python-dotenv==1.0.1
+python-multipart==0.0.9
+openai==1.64.0
+python-multipart==0.0.9
