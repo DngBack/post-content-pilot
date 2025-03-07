@@ -6,17 +6,19 @@ from src.components.content_sum import ContentSummarizationService
 from src.components.convert2post import ConvertPostInput
 from src.components.convert2post import ConvertPostService
 from src.settings.settings import load_settings
-from typing_extensions import Annotated
 
 app = typer.Typer()
 
 
 @app.command()
-def main(file_path: str = typer.Option([], '--file_path', '-f', help='File Input Path'),
-         tone: str = typer.Option('Professional', '--tone', '-t', help='Tone'),
-         target_platform: str = typer.Option(
-             'LinkedIn', '--target_platform', '-p', help='Target Platform'),
-         ) -> str:
+def main(
+    file_path: str = typer.Option(
+        [], '--file_path', '-f', help='File Input Path'),
+    tone: str = typer.Option('Professional', '--tone', '-t', help='Tone'),
+    target_platform: str = typer.Option(
+        'LinkedIn', '--target_platform', '-p', help='Target Platform',
+    ),
+) -> str:
 
     # Load settings
     settings = load_settings()
