@@ -5,6 +5,8 @@ from src.components.content_sum import ContentSummarizationInput
 from src.components.content_sum import ContentSummarizationService
 from src.components.convert2post import ConvertPostInput
 from src.components.convert2post import ConvertPostService
+from src.components.pull_content import PaperInput
+from src.components.pull_content import PaperService
 from src.settings.settings import load_settings
 
 app = typer.Typer()
@@ -12,8 +14,12 @@ app = typer.Typer()
 
 @app.command()
 def main(
+    paper_url: str = typer.Option(
+        [], '--url_link', '-u', help='Link to paper',
+    ),
     file_path: str = typer.Option(
-        [], '--file_path', '-f', help='File Input Path'),
+        'data/paper.pdf', '--file_path', '-f', help='File Input Path',
+    ),
     tone: str = typer.Option('Professional', '--tone', '-t', help='Tone'),
     target_platform: str = typer.Option(
         'LinkedIn', '--target_platform', '-p', help='Target Platform',
@@ -33,9 +39,19 @@ def main(
         openai_settings=settings.openai,
     )
 
+    paper_service = PaperService()
+
+    # Get Paper
+    paper_file = paper_service.process(
+        PaperInput(
+            paper_url=paper_url,
+            file_path=file_path,
+        ),
+    )
+
     # Get summary paper
     summary = content_summarization_service.process(
-        ContentSummarizationInput(file_path=file_path),
+        ContentSummarizationInput(file_path=paper_file.paper_file),
     )
 
     # Get post
