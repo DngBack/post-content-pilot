@@ -4,6 +4,13 @@ A Python tool that extracts insights from PDFs or web articles, summarizes conte
 
 ## Set Up Environments
 
+### .Env
+
+- Copy .env.dev to .env
+- Fill all variables in .env
+    - OpenAI Key in OpenAI platform
+    - LlamaParser Key in Llama  Cloud
+
 ### Python Environment
 
 - Using Python versions 3.10.16
@@ -74,4 +81,3 @@ python main_v2.py --url_link <url> --tone <tone> --target_platform <target_platf
 #### Output
 
 The output will be a text file with the generated post.
-
